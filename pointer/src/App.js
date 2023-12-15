@@ -1,18 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { initCursor } from './Event/cursor';
 import react, { useEffect } from "react";
 
 
 function App() {
   useEffect(() => {
-    initCursor({
-      enableAutoTextCursor: true,
-      enableLighting: true,
-      blockStyle: {
-        radius: "auto"
-      }
-    });
+
   }, []);
 
 
