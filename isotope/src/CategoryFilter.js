@@ -27,9 +27,9 @@ const CategoryFilter = ({
           onClick={() => {
             //카테고리 all을 선택하면 category에 all을 삽입
             if (item.value === "all") {
-                setMultiCatecory(item.value);
+              setMultiCatecory(item.value);
 
-                localStorage.setItem(LS_KEY_MULTI_CATEGORY, item.value);
+              localStorage.setItem(LS_KEY_MULTI_CATEGORY, item.value);
             } else {
               //카테고리가 all이 아닌 것을 선택하면 배열에 추가로 등록
               if (!Array.isArray(category)) {
@@ -41,11 +41,9 @@ const CategoryFilter = ({
                 );
               } else {
                 setMultiCatecory([...category, item.value]);
-                }
-                localStorage.setItem(LS_KEY_MULTI_CATEGORY, category);
+              }
+              localStorage.setItem(LS_KEY_MULTI_CATEGORY, category);
             }
-
-            
           }}
         >
           {item.name}
@@ -85,11 +83,14 @@ const CategoryFilter = ({
 
   useEffect(init, []);
   useEffect(() => {
-    if (category !== 'all') {
+    if (category !== "all") {
       localStorage.setItem(LS_KEY_MULTI_CATEGORY, category);
     }
+    if (category.length === 0) {
+      localStorage.setItem(LS_KEY_MULTI_CATEGORY, "all");
+    }
   }, [category]);
-    
+
   return (
     <div>
       <div className="category-set">{makeCategories()}</div>

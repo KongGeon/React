@@ -152,6 +152,7 @@ const App = () => {
 
   // 멀티01
   useEffect(() => {
+    console.log(multiCategory01);
     setMultiShowList01(
       categoryList02.filter((item) => {
         if (multiCategory01 === "all") return true;
@@ -169,43 +170,11 @@ const App = () => {
           // 카테고리 다중 선택한 경우
           let a = listArray;
           let b = multiCategory01;
-          console.log(b);
-          if (b.every((item) => a.includes(item))) {
+          if (Array.isArray(b) && b.every((item) => a.includes(item))) {
             return true;
           }
         }
         return false;
-        // let listArray = item.category.split(",");
-        // if (multiCategory01 === "all") return true;
-        // if (listArray.length > 1) {
-        //   // item.category가 배열인 경우
-        //   let includeNum = 0;
-        //   let notIncludeNum = 0;
-        //   listArray.forEach((e) => {
-        //     // console.log(e);
-        //     if (multiCategory01.includes(e)) {
-        //       includeNum += 1;
-        //     } else {
-        //       notIncludeNum += 1;
-        //       console.log(e);
-        //     }
-        //   });
-        //   console.log("ok", includeNum);
-        //   console.log("not", notIncludeNum);
-        //   //포함되어 있는
-        //   if (includeNum === multiCategory01.length && notIncludeNum === 0) {
-        //     console.log("----1", item.imgName);
-        //     return true;
-        //   } else {
-        //     console.log("----2", item.imgName);
-        //     return false;
-        //   }
-        // } else if (multiCategory01.includes(item.category)) {
-        //   // item.category가 단일 값인 경우
-        //   console.log("----3", item.imgName);
-        //   return true;
-        // }
-        // return false;
       })
     );
   }, [multiCategory01]);
